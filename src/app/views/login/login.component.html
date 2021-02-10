@@ -1,0 +1,60 @@
+
+<div class="app-body">
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4  mx-auto">
+          <div class="card-group">
+            <div class="card p-4">
+              <div class="card-body ">
+                <form [formGroup] = "loginForm" (ngSubmit)="onSubmit()">
+               <!-- <form [formGroup] = "loginForm" (ngSubmit)="onSubmit()"> -->
+                  <h1>Login</h1>
+                  <div *ngIf="error" type="danger" class="alert alert-danger">
+                     <strong>Ohh!</strong> 
+                        {{error.errorDesc}}
+                  </div>
+                  <p class="text-muted">Sign In to your account</p>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-user"></i></span>
+                      <input type="text" class="form-control"formControlName="username" placeholder="Username" autocomplete="username" required>
+                    </div>
+                    
+                      <br>
+                    <div class="alert alert-danger" *ngIf="username.touched && username.invalid">
+                      <div *ngIf="username.errors.required">Username is required*</div>
+                      <!-- <div *ngIf="username.errors.minlength">Username minmum length is {{ username.errors.minlength.requiredLength }}</div> -->
+                  </div>
+                  </div>
+                  <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-lock"></i></span>
+                      <input type="password" class="form-control" formControlName="password" placeholder="Password" autocomplete="current-password" required>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="password.touched && password.invalid">
+                      <div *ngIf="password.errors.required">Password is required*</div>
+                      <!-- <div *ngIf="username.errors.minlength">Username minmum length is {{ username.errors.minlength.requiredLength }}</div> -->
+                  </div>
+                  </div>
+                  <!-- <div class="service-error" *ngIf="error">
+                    <h1>{{error.errorTitle}}</h1>
+                    <h3>{{error.errorDesc}}</h3>
+                 </div> -->
+                  <div class="row">
+                    <div class="col-6">
+                      <button class="btn btn-primary px-4"  [disabled]="loginForm.invalid">Login</button>
+                    </div>
+                    <div class="col-6 text-right">
+                      <button type="button" class="btn btn-link px-0">Forgot password?</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div> 
